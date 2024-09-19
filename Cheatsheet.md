@@ -59,3 +59,14 @@ Look at history is available, as in commands done by user
 `history`  
 
 ### Network Enumeration
+To better understand the what our IP architecture is, what we're interacting with and what open ports may be available internally the might not be exposed externally.  
+Check first out IP-address. We get information if it might be dual homed, communication with multiple networks. Then we'll get multiple IP-addresses. Check the "inet" address.
+`ifconfig` or `ip a`  
+We can also use this command to check if the machine is communicating with another. We'll see our network first with the bits masked, next to it we can see our sourced adress ("src") which is our actually IP-address.
+Then underneath we can see which address it's sourced through (Which is on of it's routes).  
+`ip route`  
+Another way to look at that too is with ARP tables. ARP tables will tell us who we're communicating with and maybe there's a machine that we're talking with kind of back and forth.  
+`arp -a` or `ip neigh`  
+Lastly we want to identify the ports what ports are open as well as what Communications exist. If there are machines communicating with the machine we're on we might be able to find an exploit.
+We want to check if maybe any port is open only for the localhost ("127.0.0.1"), since then it won't be open externally.  
+`netstat -ano`
